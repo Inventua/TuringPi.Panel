@@ -1,0 +1,21 @@
+﻿[Unit]
+Description=Panel Controller
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=notify
+
+Restart=always  
+
+RestartSec=3
+
+# use Development for a development environment
+Environment=ASPNETCORE_ENVIRONMENT=Production  
+
+User=pi-admin
+WorkingDirectory=/home/pi-admin/PanelController
+ExecStart=dotnet PanelController.dll
+
+[Install]
+WantedBy=multi-user.target
